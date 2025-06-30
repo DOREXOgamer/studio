@@ -11,31 +11,31 @@ export function PostForm() {
       <Card>
         <CardContent className="pt-6 space-y-6">
           <div className="space-y-2">
-            <Label htmlFor="title" className="text-lg">Title</Label>
+            <Label htmlFor="title" className="text-lg">Título</Label>
             <Input
               id="title"
               name="title"
-              placeholder="Your groundbreaking article title"
+              placeholder="O título inovador do seu artigo"
               required
               className="text-base"
             />
           </div>
            <div className="space-y-2">
-            <Label htmlFor="author" className="text-lg">Author</Label>
+            <Label htmlFor="author" className="text-lg">Autor</Label>
             <Input
               id="author"
               name="author"
-              placeholder="Your name, e.g., Dr. Jonas Salk"
+              placeholder="Seu nome, ex: Dr. Jonas Salk"
               required
               className="text-base"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="content" className="text-lg">Content</Label>
+            <Label htmlFor="content" className="text-lg">Conteúdo</Label>
             <Textarea
               id="content"
               name="content"
-              placeholder="Share your detailed findings, methodologies, and conclusions..."
+              placeholder="Compartilhe suas descobertas detalhadas, metodologias e conclusões..."
               required
               rows={15}
               className="text-base leading-relaxed"
@@ -44,7 +44,7 @@ export function PostForm() {
         </CardContent>
         <CardFooter>
           <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90">
-            Publish Post
+            Publicar Postagem
           </Button>
         </CardFooter>
       </Card>

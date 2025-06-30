@@ -53,7 +53,7 @@ export function PostCard({ post }: PostCardProps) {
         </div>
         <Link href={`/posts/${post.id}`} passHref>
           <Button variant="ghost" size="sm">
-            Read More <ArrowRight className="ml-2 h-4 w-4" />
+            Leia Mais <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>
       </CardFooter>

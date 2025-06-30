@@ -7,9 +7,9 @@ import { addPost } from "@/lib/posts";
 import { summarizePost } from "@/ai/flows/summarize-post";
 
 const postSchema = z.object({
-  title: z.string().min(1, "Title is required"),
-  author: z.string().min(1, "Author is required"),
-  content: z.string().min(10, "Content must be at least 10 characters"),
+  title: z.string().min(1, "Título é obrigatório"),
+  author: z.string().min(1, "Autor é obrigatório"),
+  content: z.string().min(10, "O conteúdo deve ter pelo menos 10 caracteres"),
 });
 
 export async function createPostAction(formData: FormData) {
@@ -36,7 +36,7 @@ export async function summarizePostAction(articleContent: string) {
     const result = await summarizePost({ articleContent });
     return result;
   } catch (error) {
-    console.error("Error summarizing post:", error);
-    return { summary: "Sorry, we couldn't generate a summary at this time." };
+    console.error("Erro ao resumir postagem:", error);
+    return { summary: "Desculpe, não conseguimos gerar um resumo no momento." };
   }
 }

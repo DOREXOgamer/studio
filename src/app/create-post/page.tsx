@@ -9,10 +9,10 @@ export default function CreatePostPage() {
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold tracking-tight text-primary">
-              Create New Post
+              Criar Nova Postagem
             </h1>
             <p className="mt-2 text-lg text-muted-foreground">
-              Share your knowledge with the biomedical community.
+              Compartilhe seu conhecimento com a comunidade biomédica.
             </p>
           </div>
           <PostForm />

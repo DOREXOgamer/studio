@@ -11,9 +11,9 @@ export default function LoginPage() {
             <BookOpen className="h-8 w-8 text-primary" />
             <span className="font-bold text-2xl">BioConnect</span>
           </Link>
-          <h1 className="text-2xl font-bold tracking-tight">Welcome Back</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Bem-vindo de volta</h1>
           <p className="text-muted-foreground">
-            Enter your credentials to access your account.
+            Insira suas credenciais para acessar sua conta.
           </p>
         </div>
         <LoginForm />

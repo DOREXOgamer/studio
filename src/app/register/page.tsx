@@ -11,9 +11,9 @@ export default function RegisterPage() {
             <BookOpen className="h-8 w-8 text-primary" />
             <span className="font-bold text-2xl">BioConnect</span>
           </Link>
-          <h1 className="text-2xl font-bold tracking-tight">Create an Account</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Criar uma Conta</h1>
           <p className="text-muted-foreground">
-            Join the community of biomedical innovators.
+            Junte-se à comunidade de inovadores biomédicos.
           </p>
         </div>
         <RegisterForm />

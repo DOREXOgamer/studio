@@ -3,11 +3,11 @@
 'use server';
 
 /**
- * @fileOverview Summarizes biomedical posts to save time for users.
+ * @fileOverview Resume posts biomédicos para economizar o tempo dos usuários.
  *
- * - summarizePost - A function that handles the post summarization process.
- * - SummarizePostInput - The input type for the summarizePost function.
- * - SummarizePostOutput - The return type for the summarizePost function.
+ * - summarizePost - Uma função que lida com o processo de resumo de postagens.
+ * - SummarizePostInput - O tipo de entrada para a função summarizePost.
+ * - SummarizePostOutput - O tipo de retorno para a função summarizePost.
  */
 
 import {ai} from '@/ai/genkit';
@@ -16,14 +16,14 @@ import {z} from 'genkit';
 const SummarizePostInputSchema = z.object({
   articleContent: z
     .string()
-    .describe('The content of the biomedical article to summarize.'),
+    .describe('O conteúdo do artigo biomédico a ser resumido.'),
 });
 export type SummarizePostInput = z.infer<typeof SummarizePostInputSchema>;
 
 const SummarizePostOutputSchema = z.object({
   summary: z
     .string()
-    .describe('A concise summary of the biomedical article.'),
+    .describe('Um resumo conciso do artigo biomédico.'),
 });
 export type SummarizePostOutput = z.infer<typeof SummarizePostOutputSchema>;
 
@@ -37,9 +37,9 @@ const prompt = ai.definePrompt({
   name: 'summarizePostPrompt',
   input: {schema: SummarizePostInputSchema},
   output: {schema: SummarizePostOutputSchema},
-  prompt: `You are an expert in biomedical science. Please provide a concise summary of the following article, extracting the key points and findings. The summary should be no more than 200 words.
+  prompt: `Você é um especialista em ciências biomédicas. Forneça um resumo conciso do artigo a seguir, extraindo os pontos-chave e as descobertas. O resumo não deve ter mais de 200 palavras.
 
-Article Content:
+Conteúdo do Artigo:
 {{{articleContent}}}`,
 });
 

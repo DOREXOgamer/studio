@@ -28,32 +28,32 @@ export function LoginForm() {
     <form onSubmit={handleSubmit}>
       <Card>
         <CardHeader>
-          <CardTitle>Login</CardTitle>
+          <CardTitle>Entrar</CardTitle>
           <CardDescription>
-            Securely log in to the BioConnect platform.
+            Faça login com segurança na plataforma BioConnect.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="intern@bioconnect.com" required />
+            <Label htmlFor="email">E-mail</Label>
+            <Input id="email" type="email" placeholder="estagiario@bioconnect.com" required />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Senha</Label>
             <Input id="password" type="password" required />
           </div>
         </CardContent>
         <CardFooter className="flex flex-col items-stretch gap-4">
           <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
-            Login
+            Entrar
           </Button>
            <p className="text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
+            Não tem uma conta?{" "}
             <Link
               href="/register"
               className="font-medium text-primary underline-offset-4 hover:underline"
             >
-              Register
+              Cadastre-se
             </Link>
           </p>
         </CardFooter>

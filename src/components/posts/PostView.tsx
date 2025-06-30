@@ -29,15 +29,15 @@ export function PostView({ post }: PostViewProps) {
       } else {
         toast({
           variant: "destructive",
-          title: "Error",
-          description: "Could not generate summary.",
+          title: "Erro",
+          description: "Não foi possível gerar o resumo.",
         });
       }
     } catch (error) {
        toast({
           variant: "destructive",
-          title: "Error",
-          description: "An unexpected error occurred.",
+          title: "Erro",
+          description: "Ocorreu um erro inesperado.",
         });
     } finally {
       setIsLoading(false);
@@ -84,7 +84,7 @@ export function PostView({ post }: PostViewProps) {
           ) : (
             <Sparkles className="mr-2 h-5 w-5" />
           )}
-          {isLoading ? "Generating Summary..." : "Summarize with AI"}
+          {isLoading ? "Gerando Resumo..." : "Resumir com IA"}
         </Button>
       </div>
 
@@ -93,7 +93,7 @@ export function PostView({ post }: PostViewProps) {
           <CardHeader>
             <CardTitle className="flex items-center text-primary">
               <Sparkles className="mr-2 h-6 w-6" />
-              AI Summary
+              Resumo com IA
             </CardTitle>
           </CardHeader>
           <CardContent>

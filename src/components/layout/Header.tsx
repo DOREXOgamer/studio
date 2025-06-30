@@ -22,13 +22,13 @@ export default function Header() {
           <Link href="/create-post">
             <Button>
               <PlusCircle className="mr-2 h-4 w-4" />
-              New Post
+              Nova Postagem
             </Button>
           </Link>
           <Link href="/login">
             <Button variant="outline">
               <LogIn className="mr-2 h-4 w-4" />
-              Login
+              Entrar
             </Button>
           </Link>
         </div>
