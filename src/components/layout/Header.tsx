@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { BookOpen, PlusCircle, LogIn, LogOut } from "lucide-react";
+import { BookOpen, PlusCircle, LogIn, LogOut, Menu } from "lucide-react";
 import { useAuth } from "@/components/auth/AuthProvider";
 import { auth } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
@@ -16,6 +16,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+} from '@/components/ui/sheet';
 
 export default function Header() {
   const { user } = useAuth();
@@ -32,34 +38,40 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-6 flex items-center space-x-2">
-          <BookOpen className="h-6 w-6 text-primary" />
-          <span className="font-bold text-lg">BioConnect</span>
-        </Link>
-        <nav className="flex flex-1 items-center space-x-6 text-sm font-medium">
-          <Link
-            href="/"
-            className="text-foreground/60 transition-colors hover:text-foreground/80"
-          >
-            Feed
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center gap-6">
+          <Link href="/" className="flex items-center space-x-2">
+            <BookOpen className="h-6 w-6 text-primary" />
+            <span className="font-bold hidden sm:inline-block">BioConnect</span>
           </Link>
-          <Link
-            href="/guias"
-            className="text-foreground/60 transition-colors hover:text-foreground/80"
-          >
-            Guias
-          </Link>
-        </nav>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex gap-6 text-sm font-medium">
+            <Link
+              href="/"
+              className="text-foreground/60 transition-colors hover:text-foreground/80"
+            >
+              Feed
+            </Link>
+            <Link
+              href="/guias"
+              className="text-foreground/60 transition-colors hover:text-foreground/80"
+            >
+              Guias
+            </Link>
+          </nav>
+        </div>
+
         <div className="flex items-center gap-2">
           {user ? (
             <>
-              <Link href="/create-post">
-                <Button>
-                  <PlusCircle className="mr-2 h-4 w-4" />
-                  Nova Postagem
-                </Button>
-              </Link>
+              <div className="hidden sm:flex">
+                <Link href="/create-post">
+                  <Button>
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Nova Postagem
+                  </Button>
+                </Link>
+              </div>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-10 w-10 rounded-full">
@@ -79,7 +91,13 @@ export default function Header() {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleSignOut}>
+                  <DropdownMenuItem asChild className="sm:hidden cursor-pointer">
+                    <Link href="/create-post">
+                      <PlusCircle className="mr-2 h-4 w-4" />
+                      <span>Nova Postagem</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
                     <span>Sair</span>
                   </DropdownMenuItem>
@@ -87,7 +105,7 @@ export default function Header() {
               </DropdownMenu>
             </>
           ) : (
-            <>
+             <div className="hidden sm:flex items-center gap-2">
               <Link href="/login">
                 <Button variant="outline">
                   <LogIn className="mr-2 h-4 w-4" />
@@ -99,8 +117,69 @@ export default function Header() {
                   Cadastre-se
                 </Button>
               </Link>
-            </>
+            </div>
           )}
+          
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Abrir menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px]">
+                <nav className="grid gap-6 text-lg font-medium mt-6">
+                  <SheetClose asChild>
+                    <Link
+                      href="/"
+                      className="flex items-center gap-2 font-semibold"
+                    >
+                      <BookOpen className="h-6 w-6" />
+                      <span>BioConnect</span>
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link
+                      href="/"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Feed
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link
+                      href="/guias"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      Guias
+                    </Link>
+                  </SheetClose>
+                  {/* Auth buttons for mobile when not logged in */}
+                  {!user && (
+                    <div className="sm:hidden flex flex-col gap-4 pt-4 mt-auto border-t">
+                      <SheetClose asChild>
+                         <Link href="/login">
+                          <Button variant="outline" className="w-full">
+                            <LogIn className="mr-2 h-4 w-4" />
+                            Entrar
+                          </Button>
+                        </Link>
+                      </SheetClose>
+                      <SheetClose asChild>
+                        <Link href="/register">
+                          <Button className="w-full">
+                            Cadastre-se
+                          </Button>
+                        </Link>
+                      </SheetClose>
+                    </div>
+                  )}
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </header>
