@@ -44,6 +44,12 @@ export default function Header() {
           >
             Feed
           </Link>
+          <Link
+            href="/guias"
+            className="text-foreground/60 transition-colors hover:text-foreground/80"
+          >
+            Guias
+          </Link>
         </nav>
         <div className="flex items-center gap-2">
           {user ? (
